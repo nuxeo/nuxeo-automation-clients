@@ -1,0 +1,7 @@
+syntax:glob
+.idea
+build
+dist
+.DS_Store
+*.pyc
+.hg*
