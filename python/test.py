@@ -86,7 +86,7 @@ class SingleFileTestCase(unittest.TestCase):
         docs = [ doc for doc in result['entries'] if doc['title'] == self.doc_name ]
         self.assertEquals(1, len(docs))
 
-    def xtestLock(self):
+    def testLock(self):
         self.session.lock("/" + self.doc_name)
         self.session.unlock("/" + self.doc_name)
 
@@ -121,7 +121,7 @@ class MultipleFoldersTestCase(unittest.TestCase):
         doc = self.session.fetch("/" + self.folder2 + "/" + self.file)
         self.assertEquals(self.file, doc['title'])
 
-        # Original has disapeared from source folder
+        # Original has disappeared from source folder
         result = self.session.getChildren("/" + self.folder1)
         docs = [ doc for doc in result['entries'] if doc['title'] == self.file ]
         self.assertEquals(0, len(docs))
@@ -130,6 +130,7 @@ class MultipleFoldersTestCase(unittest.TestCase):
         self.session.copy("/" + self.folder1 + "/" + self.file, "/" + self.folder2)
         doc = self.session.fetch("/" + self.folder2 + "/" + self.file)
         self.assertEquals(self.file, doc['title'])
+
         # Original is still in the source folder
         doc = self.session.fetch("/" + self.folder1 + "/" + self.file)
         self.assertEquals(self.file, doc['title'])
