@@ -1,17 +1,21 @@
 About
 -----
 
-This module features a small Python client for the Nuxeo Document Automation
-JSON-RPC API.
+Python client for Nuxeo Automation server
 
 Prerequisites
 -------------
 
-This module has been tested using Python 2.6 and doesn't currently work with
-any previous versions.
+This module has been tested using Python 2.7.
 
-Install
+Usage
 -------
 
-Run "python setup.py install".
+$ python
+>>> import automation_client
+>>> client = automation_client.BaseAutomationClient('http://server:port/nuxeo', 'usernamme', password='*****')
+>>> client.execute('Document.Query', query="Select * from Document where dc:title='INDEX.txt'")
+>>> client.execute('Document.Create', op_input='doc:/default-domain/workspaces/Sandbox', type='File', name='test', properties={"dc:title":"Test"})
+>>> ...
+>>> exit()
 
