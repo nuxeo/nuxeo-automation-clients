@@ -5,3 +5,5 @@ dist
 .DS_Store
 *.pyc
 .hg*
+.project
+.pydevproject
